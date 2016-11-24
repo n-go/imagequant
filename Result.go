@@ -1,5 +1,9 @@
 package imagequant
 
+import (
+	"image/color"
+)
+
 /*
 #include "libimagequant.h"
 */
@@ -68,9 +72,21 @@ func (this *Result) WriteRemappedImage() ([]byte, error) {
 	return buff, nil
 }
 
-func (this *Result) GetPalette() *Palette {
-	ptr := *C.liq_get_palette(this.p) // copy struct content
-	return &Palette{p: ptr}
+func (this *Result) GetPalette() color.Palette {
+	ptr := C.liq_get_palette(this.p) // copy struct content
+	max := int(ptr.count)
+
+	ret := make([]color.Color, max)
+	for i := 0; i < max; i += 1 {
+		ret[i] = color.RGBA{
+			R: uint8(ptr.entries[i].r),
+			G: uint8(ptr.entries[i].g),
+			B: uint8(ptr.entries[i].b),
+			A: uint8(ptr.entries[i].a),
+		}
+	}
+
+	return ret
 }
 
 // Free memory. Callers must not use this object after Release has been called.
