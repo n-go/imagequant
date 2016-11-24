@@ -2,6 +2,7 @@ package imagequant
 
 import (
 	"image/color"
+	"unsafe"
 )
 
 /*
@@ -62,9 +63,7 @@ func (this *Result) WriteRemappedImage() ([]byte, error) {
 	buff_size := this.im.w * this.im.h
 	buff := make([]byte, buff_size)
 
-	// n.b. C.CBytes() added in go1.7.3
-
-	iqe := C.liq_write_remapped_image(this.p, this.im.p, C.CBytes(buff), C.size_t(buff_size))
+	iqe := C.liq_write_remapped_image(this.p, this.im.p, unsafe.Pointer(&buff[0]), C.size_t(buff_size))
 	if iqe != C.LIQ_OK {
 		return nil, translateError(iqe)
 	}
