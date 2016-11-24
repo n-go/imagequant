@@ -14,7 +14,7 @@ func main() {
 	flag.Parse()
 
 	if *ShouldDisplayVersion {
-		fmt.Printf("libimagequant %d\n", imagequant.GetLibraryVersion())
+		fmt.Printf("libimagequant '%s' (%d)\n", imagequant.GetLibraryVersionString(), imagequant.GetLibraryVersion())
 		os.Exit(1)
 	}
 }
