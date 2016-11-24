@@ -23,7 +23,7 @@ The sample utility has the following options:
 
 =BUILDING=
 
-Build via `go build`.
+The expected package path is `code.ivysaur.me/imagequant`. Build via `go build`.
 
 This is a CGO package and requires a C compiler installed. However, if you use `go install` then future invocations of `go build` do not require the C compiler to be present.
 
@@ -32,6 +32,11 @@ The `imagequant.go` file also declares a number of `CFLAGS` for GCC that allow t
 =LICENSE=
 
 I am releasing this binding under the ISC license, however, `libimagequant` itself is released under GPLv3-or-later and/or commercial licenses. You must comply with the terms of such a license when using this binding in a Go project.
+
+=CHANGELOG=
+
+2016-11-24 2.8go1.0
+- Initial public release
 
 =SEE ALSO=
 
