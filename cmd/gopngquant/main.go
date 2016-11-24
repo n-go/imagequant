@@ -52,7 +52,7 @@ func Rgb8PaletteToGoImage(w, h int, rgb8data []byte, pal color.Palette) image.Im
 	return ret
 }
 
-func Crush(sourcefile, destfile string) error {
+func Crush(sourcefile, destfile string, speed int) error {
 
 	fh, err := os.OpenFile(sourcefile, os.O_RDONLY, 0444)
 	if err != nil {
@@ -73,6 +73,11 @@ func Crush(sourcefile, destfile string) error {
 		return fmt.Errorf("NewAttributes: %s", err.Error())
 	}
 	defer attr.Release()
+
+	err = attr.SetSpeed(speed)
+	if err != nil {
+		return fmt.Errorf("SetSpeed: %s", err.Error())
+	}
 
 	rgba32data := GoImageToRgba32(img)
 
@@ -116,6 +121,7 @@ func main() {
 	ShouldDisplayVersion := flag.Bool("Version", false, "")
 	Infile := flag.String("In", "", "Input filename")
 	Outfile := flag.String("Out", "", "Output filename")
+	Speed := flag.Int("Speed", 3, "Speed (1 slowest, 10 fastest)")
 
 	flag.Parse()
 
@@ -124,7 +130,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	err := Crush(*Infile, *Outfile)
+	err := Crush(*Infile, *Outfile, *Speed)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
