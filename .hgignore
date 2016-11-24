@@ -1,3 +1,4 @@
 mode:regex
 
+^_dist/
 \.exe$
