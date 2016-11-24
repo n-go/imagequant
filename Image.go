@@ -38,7 +38,9 @@ func (this *Image) Release() {
 }
 
 func (this *Image) Quantize(attr *Attributes) (*Result, error) {
-	res := Result{}
+	res := Result{
+		im: this,
+	}
 	liqerr := C.liq_image_quantize(this.p, attr.p, &res.p)
 	if liqerr != C.LIQ_OK {
 		return nil, translateError(liqerr)
