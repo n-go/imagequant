@@ -58,9 +58,3 @@ func GetLibraryVersion() int {
 func GetLibraryVersionString() string {
 	return C.GoString(C.liqVersionString())
 }
-
-const (
-	SPEED_SLOWEST = 1
-	SPEED_DEFAULT = 3
-	SPEED_FASTEST = 10
-)

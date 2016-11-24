@@ -23,6 +23,11 @@ func NewAttributes() (*Attributes, error) {
 	return &Attributes{p: pAttr}, nil
 }
 
+const (
+	COLORS_MIN = 2
+	COLORS_MAX = 256
+)
+
 func (this *Attributes) SetMaxColors(colors int) error {
 	return translateError(C.liq_set_max_colors(this.p, C.int(colors)))
 }
@@ -30,6 +35,11 @@ func (this *Attributes) SetMaxColors(colors int) error {
 func (this *Attributes) GetMaxColors() int {
 	return int(C.liq_get_max_colors(this.p))
 }
+
+const (
+	QUALITY_MIN = 0
+	QUALITY_MAX = 100
+)
 
 func (this *Attributes) SetQuality(minimum, maximum int) error {
 	return translateError(C.liq_set_quality(this.p, C.int(minimum), C.int(maximum)))
@@ -42,6 +52,12 @@ func (this *Attributes) GetMinQuality() int {
 func (this *Attributes) GetMaxQuality() int {
 	return int(C.liq_get_max_quality(this.p))
 }
+
+const (
+	SPEED_SLOWEST = 1
+	SPEED_DEFAULT = 3
+	SPEED_FASTEST = 10
+)
 
 func (this *Attributes) SetSpeed(speed int) error {
 	return translateError(C.liq_set_speed(this.p, C.int(speed)))
