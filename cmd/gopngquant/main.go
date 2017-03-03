@@ -61,7 +61,7 @@ func Rgb8PaletteToGoImage(w, h int, rgb8data []byte, pal color.Palette) image.Im
 
 	for y := 0; y < h; y += 1 {
 		for x := 0; x < w; x += 1 {
-			ret.SetColorIndex(x, y, rgb8data[y*h+x])
+			ret.SetColorIndex(x, y, rgb8data[y*w+x])
 		}
 	}
 
