@@ -23,6 +23,9 @@ The sample utility has the following options:
 
 =BUILDING=
 
+This package can be installed via go get: `go get code.ivysaur.me/imagequant`
+[go-get]code.ivysaur.me/imagequant git https://git.ivysaur.me/code.ivysaur.me/imagequant.git[/go-get]
+
 The expected package path is `code.ivysaur.me/imagequant`. Build via `go build`.
 
 This is a CGO package and requires a C compiler installed. However, if you use `go install` then future invocations of `go build` do not require the C compiler to be present.
