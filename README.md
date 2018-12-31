@@ -6,8 +6,6 @@ Go bindings for libimagequant
 
 This binding was written by hand. The result is somewhat more idiomatic than an automated conversion, but some `defer foo.Release()` calls are required for memory management.
 
-Written in Golang
-
 ## Usage
 
 Usage example is provided by a sample utility `cmd/gopngquant` which mimics some functionality of the upstream `pngquant`.
@@ -28,7 +26,6 @@ Usage of gopngquant:
 ## Building
 
 This package can be installed via go get: `go get code.ivysaur.me/imagequant`
-[go-get]code.ivysaur.me/imagequant git https://git.ivysaur.me/code.ivysaur.me/imagequant.git[/go-get]
 
 The expected package path is `code.ivysaur.me/imagequant`. Build via `go build`.
 
