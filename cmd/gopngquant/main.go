@@ -24,7 +24,7 @@ import (
 	"image/png"
 	"os"
 
-	"code.ivysaur.me/imagequant"
+	"github.com/n-go/imagequant"
 )
 
 func GoImageToRgba32(im image.Image) []byte {

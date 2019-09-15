@@ -1,1 +1,1 @@
-module code.ivysaur.me/imagequant
+module github.com/n-go/imagequant
